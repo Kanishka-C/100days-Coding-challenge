@@ -12,7 +12,7 @@ def isprime(x):
     else:
         return False
 num=int(input('Enter a number : '))
-for i in range (2,num+1):
+for i in range (2,num):
     if isprime(i) and isprime(num-i):
         print(num,'can be expressed as the sum of ',i,' and ',num-i)
         exit(0)
