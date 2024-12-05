@@ -1,5 +1,6 @@
 #Maximum product subarray
 n=int(input('Enter the size of the array : '))
+print('Enter the elements of the array : ')
 arr=list(map(int,input().split()))
 maximumProd=1
 forward=1  #from left to right
