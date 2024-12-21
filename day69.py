@@ -1,10 +1,14 @@
 #Multilevel inheritence
 class Isosceles:
     def isosceles(self):
-        print('I am an isosceles triangle I am a triangle')
+        print('I am an isosceles triangle')
 class Equilateral(Isosceles):
     def equilateral(self):
         print('I am an equilateral triangle')
-eq=Equilateral()
-eq.equilateral()
-eq.isosceles()
+class C (Equilateral):
+    def display(self):
+        print('I am a triangle')
+c=C()
+c.equilateral()
+c.isosceles()
+c.display()
