@@ -15,6 +15,6 @@ T=int(input('Enter the number of test cases: '))
 for _ in range(T):
     N,K=map(int,(input('Enter values of N and K : ').split()))
     if N%K==0:
-        print(int(N/K))
+        print(N//K)
     else:
         print(-1)
