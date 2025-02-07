@@ -1,27 +1,32 @@
-def max_steps(n, k, c, arr):
-    arr.sort()  # Step 1: Sort the array
-    steps = 0   # Count of valid steps
-    used = [False] * n  # Track if a number is already used in a group
+'''Gru has a string S of length N, consisting of only characters a and b for banana and P points to spend.
+Now Gru wants to replace and/or re-arrange characters of this given string to get the lexicographically smallest string possible. 
+For this, he can perform the following two operations any number of times.
+Swap any two characters in the string. This operation costs 1 point. (any two, need not be adjacent)
+Replace a character in the string with any other lower case english letter. This operation costs 2 points.
+Help Gru in obtaining the lexicographically smallest string possible, by using at most P points.
 
-    i = 0  # Pointer to find valid groups
-    while i < n:
-        group = []  # Store elements forming a valid group
-        for j in range(i, n):
-            if not used[j]:  # Pick only unused elements
-                if len(group) == 0 or arr[j] >= group[-1] * c:
-                    group.append(arr[j])  # Add to the group
-                    used[j] = True  # Mark as used
-                    if len(group) == k:  # If we formed a valid group of K
-                        steps += 1
-                        break  # Move to the next group
+Input:
+First line will contain T, number of testcases. Then the testcases follow.
+Each testcase contains two lines of input, first-line containing two integers N , P.
+The second line contains a string S consisting of N characters.
 
-        i += 1  # Move to the next element to start a new group
-
-    return steps
-
-# Read input
+Output: For each testcase, output in a single containing the lexicographically smallest string obtained.'''
 t = int(input())  # Number of test cases
 for _ in range(t):
-    n, k, c = map(int, input().split())  # Read N, K, C
-    arr = list(map(int, input().split()))  # Read the N numbers
-    print(max_steps(n, k, c, arr))  # Compute and print the result
+    n,p=map(int,(input().split()))
+    s=list(input())
+    swaps_needed=0
+    sorted_s=sorted(s)
+    for i in range(n):
+        if s[i]!=sorted_s[i]:
+            swaps_needed+=1
+    swaps_needed//=2
+    if swaps_needed<=p:
+        p-=swaps_needed
+        s=sorted_s
+    for i in range(n):
+        #if p
+        if s[i]!='a' and p>=2:
+            s[i]='a'
+            p-=2
+    print(''.join(s))
